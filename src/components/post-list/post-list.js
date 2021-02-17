@@ -4,24 +4,27 @@ import {connect} from 'react-redux';
 
 import './post-list.css'
 
-const PostList = ({posts, filter}) => {
+const PostList = ({posts, filter, searchText}) => {
    
-    let filterredItems
+    let filteredItems
 
     if (filter === 'all') {
-        filterredItems = posts
+        filteredItems = posts
     }
     
     if (filter === 'completed') {
-        filterredItems = posts.filter(item => item.isCompleted === true)
+        filteredItems = posts.filter(item => item.isCompleted === true)
     } 
 
     if (filter === 'active') {
-        filterredItems = posts.filter(item => item.isCompleted === false)
+        filteredItems = posts.filter(item => item.isCompleted === false)
     } 
 
-    console.log(filterredItems)
-    const items = filterredItems.map(item => {
+    if (searchText.length > 0) {
+        filteredItems = posts.filter(item => item.label.indexOf(searchText) > -1)
+    }
+
+    const items = filteredItems.map(item => {
         const {id, label, isCompleted} = item
 
         return (
@@ -41,10 +44,11 @@ const PostList = ({posts, filter}) => {
     )
 }
 
-const mapStateToProps = ({posts, filter}) => {
+const mapStateToProps = ({posts, filter, searchText}) => {
     return {
         posts,
-        filter
+        filter,
+        searchText
     }
 }
 

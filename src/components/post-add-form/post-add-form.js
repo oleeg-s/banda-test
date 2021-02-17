@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import {connect} from 'react-redux';
-import {addTasc} from '../../actions';
+import {addTask} from '../../actions/actions';
 
 import './post-add-form.css';
 
-const PostAddForm = ({addTasc}) => {
+const PostAddForm = ({addTask}) => {
 
     const [text, updateText] = useState('')
 
@@ -17,12 +17,16 @@ const PostAddForm = ({addTasc}) => {
             className='bottom-panel d-flex'
             onSubmit={(e) => {
                 e.preventDefault()
-                addTasc(text)
-                updateText('')
+
+                if (text.length > 0) {
+                    addTask(text)
+                    updateText('')
+                }
+                
             }}>
             <input
                 type='text'
-                placeholder='Добавить дело'
+                placeholder='Add task...'
                 className='form-control new-post-label'
                 value={text}
                 onChange={onChange}
@@ -30,13 +34,13 @@ const PostAddForm = ({addTasc}) => {
             <button
                 type='submit'
                 className='btn btn-outline-secondary'>
-                Добавить</button>
+                Add</button>
         </form>
     )
 }
 
 const mapDispatchToProps = {
-        addTasc
+        addTask
 }
 
 export default connect(null, mapDispatchToProps)(PostAddForm)

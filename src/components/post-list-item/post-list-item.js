@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {removeTasc, toggleComplete} from '../../actions';
+import {removeTask, toggleComplete} from '../../actions/actions';
 
 import './post-list-item.css'
 
-const PostListItem = ({label, id, isCompleted, removeTasc, toggleComplete}) => {
+const PostListItem = ({label, id, isCompleted, removeTask, toggleComplete}) => {
 
     let labelStyle = 'app-list-item-label'
 
@@ -13,9 +13,10 @@ const PostListItem = ({label, id, isCompleted, removeTasc, toggleComplete}) => {
     }
 
     return (
-        <div className='app-list-item d-flex justify-content-between'>
+        <div className='app-list-item d-flex justify-content-between align-items-center'>
             <input 
                 type='checkbox'
+                className='checkbox'
                 onChange={() => toggleComplete(id)}
                 checked={isCompleted ? true : false}/>
             <span 
@@ -27,7 +28,7 @@ const PostListItem = ({label, id, isCompleted, removeTasc, toggleComplete}) => {
                 <button 
                     type='button' 
                     className='btn-trash btn-sm'
-                    onClick={() => removeTasc(id)}>
+                    onClick={() => removeTask(id)}>
                         <i className='fa fa-trash-o'></i>
                 </button>
             </div>
@@ -36,7 +37,7 @@ const PostListItem = ({label, id, isCompleted, removeTasc, toggleComplete}) => {
 }
 
 const mapDispatchToProps = {
-    removeTasc,
+    removeTask,
     toggleComplete
 }
 

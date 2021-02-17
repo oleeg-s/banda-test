@@ -1,26 +1,35 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {filterByCompleted, filterByActive, filterByAll} from '../../actions';
+import {filterByCompleted, filterByActive, filterByAll} from '../../actions/actions';
 
 import './post-status-filter.css'
 
-const PostStatusFilter = ({filterByCompleted, filterByActive, filterByAll}) => {
+const PostStatusFilter = ({filter, filterByCompleted, filterByActive, filterByAll}) => {
     return (
         <div className='btn-group'>
             <button 
-                className='btn btn-info'
+                name='all'
+                className={`btn ${filter === 'all' ? 'btn-info' : 'btn-outline-secondary'}`}
                 onClick={() => filterByAll()}
-                >Все</button>
+                >All</button>
             <button 
-                className='btn btn-outline-secondary'
+                name='active'
+                className={`btn ${filter === 'active' ? 'btn-info' : 'btn-outline-secondary'}`}
                 onClick={() => filterByActive()}
-                >Активные</button>
+                >Active</button>
             <button 
-                className='btn btn-outline-secondary'
+                name='completed'
+                className={`btn ${filter === 'completed' ? 'btn-info' : 'btn-outline-secondary'}`}
                 onClick={() => filterByCompleted()}
-                >Выполнено</button>
+                >Completed</button>
         </div>
     )
+}
+
+const mapStateToProps = ({filter}) => {
+    return {
+        filter
+    }
 }
 
 const mapDispatchToProps = {
@@ -29,4 +38,4 @@ const mapDispatchToProps = {
     filterByAll
 }
 
-export default connect(null, mapDispatchToProps)(PostStatusFilter)
+export default connect(mapStateToProps, mapDispatchToProps)(PostStatusFilter)

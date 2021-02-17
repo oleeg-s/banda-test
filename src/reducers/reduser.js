@@ -1,10 +1,19 @@
+import {ADD_POST, 
+        REMOVE_TASK, 
+        TOGGLE_COMPLETE, 
+        FILTER_BY_ALL, 
+        FILTER_BY_COMPLETED, 
+        FILTER_BY_ACTIVE, 
+        SEARCH_TASK} from '../actions/actions-names';
+
 const initialState = {
     posts: [
-        {label: 'Todo1', id: 1, isCompleted: false},
-        {label: 'Todo2', id: 2, isCompleted: false},
-        {label: 'Todo3', id: 3, isCompleted: false}
+        {label: 'Todo 1', id: 1, isCompleted: false},
+        {label: 'Todo 2', id: 2, isCompleted: false},
+        {label: 'Todo 3', id: 3, isCompleted: false}
     ],
-    filter: 'all'
+    filter: 'all',
+    searchText: ''
 }
 
 let nextId = 4
@@ -13,8 +22,7 @@ const reducer = (state = initialState, action) => {
     let newPosts
 
     switch(action.type) {
-
-        case 'ADD_POST':
+        case ADD_POST:
             newPosts = [
                 ...state.posts,
                 {
@@ -23,6 +31,7 @@ const reducer = (state = initialState, action) => {
                     isCompleted: false
                 }
             ]
+
             return {
                 ...state,
                 posts: [
@@ -30,8 +39,7 @@ const reducer = (state = initialState, action) => {
                 ]
             }
 
-        case 'REMOVE_TASC':
-
+        case REMOVE_TASK:
             newPosts = state.posts.filter(item => item.id !== action.payload)
 
             return {
@@ -40,8 +48,7 @@ const reducer = (state = initialState, action) => {
                     ...newPosts
                 ]
             }
-        case 'TOGGLE_COMPLETE':
-
+        case TOGGLE_COMPLETE:
             newPosts = state.posts.map(item => item.id === action.payload ? 
                 {...item, isCompleted: !item.isCompleted} : item)
 
@@ -52,24 +59,30 @@ const reducer = (state = initialState, action) => {
                 ]
             }
 
-        case 'FILTER_BY_ALL': {
+        case FILTER_BY_ALL: {
             return {
                 ...state,
                 filter: 'all'
             }
         }    
 
-        case 'FILTER_BY_COMPLETED': 
+        case FILTER_BY_COMPLETED: 
             return {
                 ...state,
                 filter: 'completed'
             }
 
-        case 'FILTER_BY_ACTIVE':
-        return {
-            ...state,
+        case FILTER_BY_ACTIVE:
+            return {
+                ...state,
                 filter: 'active'
-        }
+            }
+        
+        case SEARCH_TASK:
+            return {
+                ...state,
+                searchText: action.payload
+            }
             
         default: 
             return state
