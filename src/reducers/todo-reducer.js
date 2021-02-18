@@ -4,13 +4,13 @@ import {ADD_POST,
         FILTER_BY_ALL, 
         FILTER_BY_COMPLETED, 
         FILTER_BY_ACTIVE, 
-        SEARCH_TASK} from '../actions/actions-names';
+        SEARCH_TASK} from '../actions/names';
 
 const initialState = {
     posts: [
-        {label: 'Todo 1', id: 1, isCompleted: false},
-        {label: 'Todo 2', id: 2, isCompleted: false},
-        {label: 'Todo 3', id: 3, isCompleted: false}
+        {label: 'Make a todo list', id: 1, isCompleted: false},
+        {label: 'Fix a bugs', id: 2, isCompleted: false},
+        {label: 'Upload to GitHub', id: 3, isCompleted: false}
     ],
     filter: 'all',
     searchText: ''

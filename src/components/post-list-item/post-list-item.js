@@ -1,6 +1,6 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {removeTask, toggleComplete} from '../../actions/actions';
+import {removeTask, toggleComplete} from '../../actions/todo-actions';
 
 import './post-list-item.css'
 
@@ -18,7 +18,7 @@ const PostListItem = ({label, id, isCompleted, removeTask, toggleComplete}) => {
                 type='checkbox'
                 className='checkbox'
                 onChange={() => toggleComplete(id)}
-                checked={isCompleted ? true : false}/>
+                checked={isCompleted}/>
             <span 
                 className={labelStyle}
                 onClick={() => toggleComplete(id)}>

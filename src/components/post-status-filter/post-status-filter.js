@@ -1,8 +1,7 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {filterByCompleted, filterByActive, filterByAll} from '../../actions/actions';
+import {filterByCompleted, filterByActive, filterByAll} from '../../actions/todo-actions';
 
-import './post-status-filter.css'
 
 const PostStatusFilter = ({filter, filterByCompleted, filterByActive, filterByAll}) => {
     return (

@@ -4,7 +4,7 @@ import {ADD_POST,
         FILTER_BY_ALL, 
         FILTER_BY_COMPLETED, 
         FILTER_BY_ACTIVE, 
-        SEARCH_TASK} from './actions-names';
+        SEARCH_TASK} from './names';
 
 const addTask = (body) => {
     return {

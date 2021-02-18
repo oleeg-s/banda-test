@@ -1,32 +1,31 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
-import {searchTask} from '../../actions/actions';
+import {searchTask} from '../../actions/todo-actions';
 
 import './search-panel.css'
 
-const SearchPanel = ({searchTask}) => {
-
-    const [text, setText] = useState('')
-
-    useEffect(() => {
-        searchTask(text)
-    }, [searchTask, text])
-
+const SearchPanel = ({searchText, searchTask}) => {
     return (
         <input
             className='form-control search-input'
             type='text'
             placeholder='Search...'
-            value={text}
+            value={searchText}
             onChange={(e) => {
-                setText(e.target.value)
+                searchTask(e.target.value)
             }}
         />
     )
+}
+
+const mapStateToProps = ({searchText}) => {
+    return {
+        searchText
+    }
 }
 
 const mapDispatchToProps = {
     searchTask
 }
 
-export default connect(null, mapDispatchToProps)(SearchPanel)
+export default connect(mapStateToProps, mapDispatchToProps)(SearchPanel)

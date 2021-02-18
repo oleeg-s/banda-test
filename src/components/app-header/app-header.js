@@ -18,4 +18,5 @@ const mapStateToProps = ({posts}) => {
     }
 }
 
+
 export default connect(mapStateToProps)(AppHeader)
