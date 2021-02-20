@@ -1,0 +1,9 @@
+export const ADD_POST  = 'ADD_POST';
+export const REMOVE_TASK = 'REMOVE_TASK';
+export const TOGGLE_COMPLETE = 'TOGGLE_COMPLETE';
+export const FILTER_BY_ALL = 'FILTER_BY_ALL';
+export const FILTER_BY_COMPLETED = 'FILTER_BY_COMPLETED';
+export const FILTER_BY_ACTIVE = 'FILTER_BY_ACTIVE';
+export const SEARCH_TASK = 'SEARCH_TASK';
+export const UPDATE_TASK_TEXT = 'UPDATE_TASK_TEXT';
+

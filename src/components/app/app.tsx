@@ -7,7 +7,7 @@ import PostAddForm from '../post-add-form/post-add-form';
 
 import './app.css';
 
-const App = () => {
+const App: React.FC = () => {
     return (
         <div className='app'>
             <AppHeader/>
@@ -21,4 +21,4 @@ const App = () => {
     )
 }
 
-export default App
+export default App;
