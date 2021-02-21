@@ -9,8 +9,13 @@ import { ADD_POST,
         } from '../actions/names';
 import { IAction } from '../actions/todo-actions';
 
+export interface IPosts {
+        label: string,
+        id: number,
+        isCompleted: boolean
+}
 interface IState {
-    posts: any[],
+    posts: IPosts[],
     taskText: string,
     filter: string,
     searchText: string
@@ -25,12 +30,12 @@ const initialState: IState = {
     taskText: '',
     filter: 'all',
     searchText: ''
-}
+};
 
-let nextId: number = 4;
+let nextId = 4;
 
 const reducer = (state = initialState, action: IAction): IState => {
-    let newPosts: any[];
+    let newPosts;
 
     switch(action.type) {
         case ADD_POST:
@@ -41,20 +46,20 @@ const reducer = (state = initialState, action: IAction): IState => {
                     id: nextId++, 
                     isCompleted: false
                 }
-            ]
+            ];
 
             return {
                 ...state,
                 posts: [
                     ...newPosts
                 ]
-            }
+            };
 
         case UPDATE_TASK_TEXT: 
             return {
                 ...state,
                 taskText: action.payload!.taskText
-            }
+            };
 
         case REMOVE_TASK:
             newPosts = state.posts.filter(item => item.id !== action.payload!.id);
@@ -64,7 +69,7 @@ const reducer = (state = initialState, action: IAction): IState => {
                 posts: [
                     ...newPosts
                 ]
-            }
+            };
         case TOGGLE_COMPLETE:
             newPosts = state.posts.map(item => item.id === action.payload!.id ? 
                 {...item, isCompleted: !item.isCompleted} : item);
@@ -74,36 +79,36 @@ const reducer = (state = initialState, action: IAction): IState => {
                 posts: [
                     ...newPosts
                 ]
-            }
+            };
 
         case FILTER_BY_ALL: {
             return {
                 ...state,
                 filter: 'all'
-            }
+            };
         }    
 
         case FILTER_BY_COMPLETED: 
             return {
                 ...state,
                 filter: 'completed'
-            }
+            };
 
         case FILTER_BY_ACTIVE:
             return {
                 ...state,
                 filter: 'active'
-            }
+            };
         
         case SEARCH_TASK:
             return {
                 ...state,
                 searchText: action.payload!.text
-            }
+            };
             
         default: 
-            return state
+            return state;
     }   
-}
+};
 
 export default reducer;

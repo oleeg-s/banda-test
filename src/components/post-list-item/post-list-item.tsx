@@ -41,12 +41,12 @@ const PostListItem: React.FC<IpostListItemProps> = ({label, id, isCompleted, rem
                 </button>
             </div>
         </div>
-    )
-}
+    );
+};
 
 const mapDispatchToProps = {
     removeTask,
     toggleComplete
-}
+};
 
 export default connect(null, mapDispatchToProps)(PostListItem);

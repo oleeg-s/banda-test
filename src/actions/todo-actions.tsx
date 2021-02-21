@@ -15,55 +15,65 @@ export interface IAction {
 const addTask = (body: string): IAction => {
     return {
         type: ADD_POST,
-        payload: {body: body}
-    }
-}
+        payload: {
+            body: body
+        }
+    };
+};
 
 const updateTaskText = (taskText: string): IAction => {
     return {
         type: UPDATE_TASK_TEXT,
-        payload: {taskText}
-    }
-}
+        payload: {
+            taskText
+        }
+    };
+};
 
 const removeTask = (id: number): IAction => {
     return {
         type: REMOVE_TASK,
-        payload: {id}
-    }
-}
+        payload: {
+            id
+        }
+    };
+};
 
 const toggleComplete = (id: number): IAction => {
     return {
         type: TOGGLE_COMPLETE,
-        payload: {id}
-    }
-}
+        payload: {
+            id
+        }
+    };
+};
 
 const filterByAll = (): IAction => {
     return {
         type: FILTER_BY_ALL
-    }
-}
+    };
+};
 
 const filterByCompleted = (): IAction => {
     return {
         type: FILTER_BY_COMPLETED
-    }
-}
+    };
+};
 
 const filterByActive = (): IAction => {
     return {
         type: FILTER_BY_ACTIVE
-    }
-}
+    };
+};
 
 const searchTask = (text: string): IAction => {
     return {
         type: SEARCH_TASK,
-        payload: {text}
-    }
-}
+        payload: {
+            text
+        }
+    };
+};
 
 export {
     addTask,
@@ -74,4 +84,4 @@ export {
     filterByCompleted,
     filterByActive,
     searchTask
-}
+};

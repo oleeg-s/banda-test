@@ -1,5 +1,5 @@
 import React from 'react';
-import { IAction } from '../../actions/todo-actions'
+import { IAction } from '../../actions/todo-actions';
 
 interface IButtonProps {
     label: string,
@@ -16,7 +16,7 @@ const Button: React.FC<IButtonProps> = ({label, name, className, filterBy}) => {
             onClick={filterBy}>
             {label}
         </button>
-    )
-}
+    );
+};
 
 export default Button;

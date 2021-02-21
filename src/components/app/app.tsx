@@ -18,7 +18,7 @@ const App: React.FC = () => {
             <PostList/>
             <PostAddForm/>
         </div>
-    )
-}
+    );
+};
 
 export default App;

@@ -18,20 +18,20 @@ const SearchPanel:React.FC<ISearchPanelProps> = ({searchText, searchTask}) => {
             className='form-control search-input'
             value={searchText}
             onChange={(e: React.ChangeEvent<HTMLInputElement>): void => {
-                searchTask(e.target.value)
+                searchTask(e.target.value);
             }}
         />
-    )
-}
+    );
+};
 
 const mapStateToProps = ({searchText}: { searchText: string }): { searchText: string } => {
     return {
         searchText
-    }
-}
+    };
+};
 
 const mapDispatchToProps = {
     searchTask
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchPanel);

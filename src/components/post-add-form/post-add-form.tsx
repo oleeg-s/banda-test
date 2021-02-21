@@ -16,11 +16,11 @@ const PostAddForm: React.FC<IPostAddFormProps> = ({taskText, addTask, updateTask
         <form 
             className='bottom-panel d-flex'
             onSubmit={(e: React.FormEvent<HTMLFormElement>): void => {
-                e.preventDefault()
+                e.preventDefault();
 
                 if (taskText.length > 0) {
-                    addTask(taskText)
-                    updateTaskText('')
+                    addTask(taskText);
+                    updateTaskText('');
                 }
                 
             }}>
@@ -30,7 +30,7 @@ const PostAddForm: React.FC<IPostAddFormProps> = ({taskText, addTask, updateTask
                 className='form-control new-post-label'
                 value={taskText}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>): void => {
-                    updateTaskText(e.target.value)
+                    updateTaskText(e.target.value);
                 }}
             />
             <button
@@ -38,18 +38,18 @@ const PostAddForm: React.FC<IPostAddFormProps> = ({taskText, addTask, updateTask
                 className='btn btn-outline-secondary'>
                 Add</button>
         </form>
-    )
-}
+    );
+};
 
 const mapStateToProps = ({taskText}: { taskText: string }): { taskText: string } => {
     return {
         taskText
-    }
-}
+    };
+};
 
 const mapDispatchToProps = {
         addTask,
         updateTaskText
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostAddForm);

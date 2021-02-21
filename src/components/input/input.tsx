@@ -17,7 +17,7 @@ const Input: React.FC<IInputProps> = ({placeholder, className, value, onChange})
             value={value}
             onChange={onChange}
         />
-    )
-}
+    );
+};
 
 export default Input;

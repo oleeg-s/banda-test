@@ -13,40 +13,41 @@ interface IPostStatusFilterProps {
 const PostStatusFilter: React.FC<IPostStatusFilterProps> = ({filter, filterByCompleted, filterByActive, filterByAll}) => {
 
     const buttons = [
-        {label: 'All', name: 'all', filterBy: filterByAll},
-        {label: 'Active', name: 'active', filterBy: filterByActive},
-        {label: 'Completed', name: 'completed', filterBy: filterByCompleted}
+        {id: 1, label: 'All', name: 'all', filterBy: filterByAll},
+        {id: 2, label: 'Active', name: 'active', filterBy: filterByActive},
+        {id: 3, label: 'Completed', name: 'completed', filterBy: filterByCompleted}
     ];
-
+    
     const elements = buttons.map(item => {
-        const {label, name, filterBy} = item;
-        
+        const {label, name, id, filterBy} = item;
+    
         return (
             <Button 
+                key={id}
                 label={label}
                 name={name}
                 className={filter === name ? 'btn btn-info' : 'btn btn-outline-secondary'}
                 filterBy={filterBy}/>
-        )
-    })
+        );
+    });
 
     return (
         <div className='btn-group'>
             {elements}
         </div>
-    )
-}
+    );
+};
 
 const mapStateToProps = ({filter}: { filter: string }): { filter: string } => {
     return {
         filter
-    }
-}
+    };
+};
 
 const mapDispatchToProps = {
     filterByCompleted,
     filterByActive,
     filterByAll
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(PostStatusFilter);

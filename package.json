@@ -26,6 +26,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "code:lint": "eslint --ext .js,.jsx,.ts,.tsx \"src/\"",
     "lint": "eslint src"
   },
   "eslintConfig": {
@@ -53,7 +54,7 @@
   },
   "lint-staged": {
     "src/**/*.{ts, tsx}": [
-      "node_modules/.bin/eslint --max-warnings=0",
+      "eslint . --fix",
       "git add"
     ]
   }
