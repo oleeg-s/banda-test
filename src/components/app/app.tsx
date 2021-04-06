@@ -13,7 +13,7 @@ const App: React.FC = () => {
     const [count, setCount] = useState(1);
 
     const arr1 = [1, 2, 3, 4, 5];
-    let coun = 0;
+    let coun = 1;
     const testButton = () => {
 
         arr1.forEach(item => {
